@@ -31,6 +31,29 @@ class Instructor extends Person {
     //}
 }
 
+class Student extends Person {
+    constructor(attrs){
+        super(attrs);
+        this.previousBackground = attrs.previousBackground;
+        this.className = attrs.className;
+        this.favSubjects = attrs.favSubjects;
+    }
+
+    listSubjects(){
+        for (let n = 0; n < this.favSubjects.length; n++) {
+            console.log(this.favSubjects[n]);
+        }
+    }
+
+    PRAssignment(subject){
+        console.log(`${this.name} has submitted a PR for ${subject}`);
+    }
+
+    sprintChallenge(subject){
+        console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    }
+}
+
 //instances and testing
 
 //Person class instances
@@ -88,3 +111,20 @@ ada = new Instructor ({
 austen.demo("Lambda School");
 cam.demo("HTML");
 ada.demo("the Babbage engine");
+ada.speak();
+
+//Student class instances
+ian = new Student ({
+    name: "ian Ruotsala",
+    location: "Everett, Washington",
+    gender: "male",
+    previousBackground: "college student",
+    className: "Web PT 5",
+    favSubjects: ["Python", "web dev", "infosec"]
+});
+
+ian.speak();
+ian.listSubjects();
+ian.PRAssignment("preprocessors");
+ian.sprintChallenge("JavaScript");
+//combo test calls
