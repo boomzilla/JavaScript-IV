@@ -26,9 +26,9 @@ class Instructor extends Person {
         console.log(`Today we are learning about ${subject}`);
     }
 
-    //grade(subject, Student){
-    //to implemnent
-    //}
+    grade(thisStudent, subject){
+        console.log(`${thisStudent.name} receives a perfect score on ${subject}`);
+    }
 }
 
 class Student extends Person {
@@ -51,6 +51,22 @@ class Student extends Person {
 
     sprintChallenge(subject){
         console.log(`${this.name} has begun sprint challenge on ${subject}`);
+    }
+}
+
+class ProjectManager extends Instructor {
+    constructor(attrs){
+        super(attrs);
+        this.gradClassName = attrs.gradClassName;
+        this.favInstructor = attrs.favInstructor;
+    }
+
+    standUp(channel){
+        console.log(`${this.name} announces to ${channel}, @channel standby times!`);
+    }
+
+    debugsCode(thisStudent, subject){
+        console.log(`${this.name} debugs ${thisStudent.name}'s code on ${subject}`);
     }
 }
 
@@ -127,4 +143,24 @@ ian.speak();
 ian.listSubjects();
 ian.PRAssignment("preprocessors");
 ian.sprintChallenge("JavaScript");
+
+//PM class instances
+
+alex = new ProjectManager ({
+    name: "Alex King",
+    location: "Seattle",
+    gender: "male",
+    specialty: "web dev",
+    favLanguage: "JavaScript",
+    catchPhrase: "Java is to JavaScript what ham is to hamster.",
+    gradClassName: "Web 5",
+    favInstructor: "Cam Pope"
+})
+
+alex.demo("Quoakka");
+alex.speak();
+alex.standUp("WebPT5");
+
 //combo test calls
+cam.grade(ian, "JavaScript");
+alex.debugsCode(ian, "LESS");
